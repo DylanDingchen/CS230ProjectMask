@@ -38,15 +38,12 @@ args = vars(ap.parse_args())
 # imagePaths = "test_data/"
 # imagePaths = list(paths.list_images(args["dataset"]))
 imagePaths = args["dataset"]
-
-print("Num GPUs Available: ", len(tf.config.list_physical_devices('GPU')))
-
-# print("the image path is " + imagePaths)
+print("the image path is " + imagePaths)
 paths = os.listdir(imagePaths)
 # # print(paths)
 # label = paths[0].split(os.path.sep)
 # print(label)
-IMG_SIZE = 224
+IMG_SIZE = 128
 CHANNELS = 3
 N_LABELS=2
 data = []
@@ -141,7 +138,7 @@ model = tf.keras.Sequential([
 
 LR = 1e-5 # Keep it small when transfer learning
 EPOCHS = 20
-BS = 256
+BS = 16
 
 model.compile(
   optimizer=tf.keras.optimizers.Adam(learning_rate=LR),
